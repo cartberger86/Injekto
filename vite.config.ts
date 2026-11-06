@@ -3,33 +3,40 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
 import pkg from "./package.json";
+// Set by GitHub Pages at build time; empty means hosting at the domain root.
+const basePath = (process.env.VITE_BASE_PATH ?? "").replace(/^\/+|\/+$/g, "");
+const base = basePath ? `/${basePath}/` : "/";
+
 export default defineConfig({
+  base,
   plugins: [
     react(),
     tailwindcss(),
     VitePWA({
       registerType: "prompt",
+      base,
+      scope: base,
       includeAssets: ["icon.svg", "apple-touch-icon.png"],
       manifest: {
         name: "Injekto-log",
         short_name: "Injekto-log",
         description: "Persönliches Protokoll für Injektionen und Gewicht",
         lang: "de-DE",
-        start_url: "/",
-        scope: "/",
+        start_url: base,
+        scope: base,
         display: "standalone",
         theme_color: "#12171b",
         background_color: "#12171b",
         icons: [
-          { src: "/icon-192.png", sizes: "192x192", type: "image/png" },
+          { src: `${base}icon-192.png`, sizes: "192x192", type: "image/png" },
           {
-            src: "/icon-512.png",
+            src: `${base}icon-512.png`,
             sizes: "512x512",
             type: "image/png",
             purpose: "any",
           },
           {
-            src: "/icon-maskable.png",
+            src: `${base}icon-maskable.png`,
             sizes: "512x512",
             type: "image/png",
             purpose: "maskable",
@@ -38,7 +45,7 @@ export default defineConfig({
       },
       workbox: {
         globPatterns: ["**/*.{js,css,html,svg,png,woff2}"],
-        navigateFallback: "/index.html",
+        navigateFallback: `${base}index.html`,
         cleanupOutdatedCaches: true,
       },
       devOptions: { enabled: false },

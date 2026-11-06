@@ -2,9 +2,48 @@
 
 Deutschsprachige, lokal speichernde Webapp für dokumentierte Injektionen und Gewicht. React + TypeScript + Vite + Tailwind CSS; installierbare PWA mit vite-plugin-pwa. Version 1.1.1.
 
+## GitHub und GitHub Pages
+
+Dieses Paket enthält den vollständigen Quellcode einschließlich `.github/workflows/pages.yml`.
+Die bestehende, separat gehostete Injekto-log-Website wird dadurch nicht verändert.
+
+1. ZIP vollständig entpacken und ein leeres GitHub-Repository `injekto-log` anlegen.
+2. Den **Inhalt** des Ordners `injekto-log` direkt im Repository speichern:
+   `package.json`, `src`, `public` und `.github` liegen auf oberster Ebene.
+   Nicht nur das ZIP hochladen und keinen zusätzlichen übergeordneten Ordner verwenden.
+3. Mit GitHub Desktop einen Commit auf `main` erstellen und mit „Publish repository“ bzw.
+   „Push origin“ übertragen. `.github` und `.gitignore` müssen mit übertragen werden.
+4. Für eine laufende Website im Repository **Settings → Pages → Source → GitHub Actions** wählen.
+5. Unter **Actions → Injekto-log auf GitHub Pages → Run workflow** den Branch `main` starten.
+   Spätere Pushes auf `main` veröffentlichen automatisch. Ohne Pages-Aktivierung kann das
+   Repository auch nur als Quellcode-Sicherung verwendet werden; dann den Workflow deaktivieren.
+6. Nach erfolgreichem Lauf zeigt der Deployment-Schritt die endgültige Website-Adresse.
+
+Der Workflow installiert pnpm, führt Tests und Build aus und veröffentlicht `dist`.
+Den Repository-Pfad liefert GitHub Pages automatisch; Assets, Manifest, Icons und Service Worker
+verwenden denselben Basispfad. Ein Repository-Name muss nicht im Code fest eingetragen werden.
+Auch Hosting am Domain-Stamm ist möglich: Ohne `VITE_BASE_PATH` gilt `/`.
+Für einen manuellen Build unter einem Unterpfad muss `VITE_BASE_PATH=/injekto-log/`
+**beim Build als Umgebungsvariable** gesetzt sein, nicht erst bei `pnpm preview`.
+
+GitHub Pages ist bei GitHub Free für öffentliche Repositorys verfügbar; für private
+Repositorys ist ein unterstützender kostenpflichtiger Tarif erforderlich. Eine normale
+Pages-Veröffentlichung hat keinen in dieser App eingebauten Login; der Zugriffsschutz
+der bisherigen ChatGPT-Website wird nicht mit exportiert. Ein privates Code-Repository
+allein ist kein garantierter Zugriffsschutz für eine veröffentlichte Pages-Website.
+
+Persönliche Tagebuchdaten und Zugangsdaten sind nicht im Paket enthalten. Bei einem
+Wechsel zur GitHub-Adresse vorher in der bisherigen App JSON exportieren und dort importieren.
+Der Browser speichert die Daten pro Website-Adresse; sie werden nicht mit GitHub synchronisiert.
+Gesundheitsdaten-Backups gehören nicht ins Repository.
+
+Offizielle Anleitungen:
+- https://vite.dev/guide/static-deploy#github-pages
+- https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages
+
 ## Start
 
-Voraussetzungen: Node.js 22.12+ oder 24 LTS; pnpm 11.25.0 (siehe packageManager). Ein aktueller Browser mit localStorage, Intl-Zeitzonenunterstützung und nativen Dialogen. Für iOS wird Safari empfohlen.
+Voraussetzungen: Node.js 24 LTS; pnpm 11.25.0 (siehe packageManager). Ein aktueller Browser mit localStorage, Intl-Zeitzonenunterstützung und nativen Dialogen. Für iOS wird Safari empfohlen.
 
 ```sh
 corepack enable
@@ -156,3 +195,11 @@ Ein lokal gestalteter Link öffnet ausschließlich nach Antippen die feste PayPa
 - Kontakt: nicht hinterlegt; wird nicht erfunden oder angezeigt
 
 Diese Angaben stehen zentral in `src/config/appInfo.ts`. Keine behauptete Verbindung zu einer Klinik oder einem Arzneimittelhersteller. Diese Projektangaben sind kein vollständiges rechtliches Impressum.
+
+## Prüfung des GitHub-Downloads
+
+- 39 automatisierte Tests erfolgreich.
+- TypeScript und Produktionsbuild für `/` sowie `/injekto-log/` erfolgreich.
+- HTML-Verweise, Assets, Manifest, Icons, Service-Worker-Adresse und Scope geprüft.
+- Workflow-YAML strukturell geprüft. Der Workflow wurde hier nicht auf GitHub ausgeführt.
+- Paket enthält keine Git-Historie, Sites-Zugangsdaten, node_modules oder Browserdaten.

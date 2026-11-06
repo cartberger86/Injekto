@@ -1,17 +1,20 @@
-Injekto-log 1.1.1 – Quellcode
+INJEKTO-LOG - FINALES GITHUB-PAKET - VERSION 1.1.1
 
-1. ZIP entpacken.
-2. README.md lesen.
-3. Mit Node.js und pnpm: pnpm install, dann pnpm dev.
-4. Mit pnpm build die fertige Website erzeugen.
+1. Dieses ZIP vollstaendig entpacken.
+2. Den INHALT des Ordners injekto-log in ein leeres GitHub-Repository
+   mit Branch main uebertragen, vorzugsweise mit GitHub Desktop.
+   package.json und .github muessen direkt im Repository liegen.
+3. Fuer die Website: Settings > Pages > Source > GitHub Actions.
+4. Unter Actions den Workflow "Injekto-log auf GitHub Pages" starten.
+5. Nach erfolgreichem Lauf die angezeigte Website-Adresse oeffnen.
 
-GitHub: Leeres Repository erstellen, entpackte Projektdateien hochladen
-oder mit GitHub Desktop committen und pushen. Die ZIP-Datei selbst
-ist kein GitHub-Quellcode-Upload. .gitignore mit übernehmen.
+Die ausfuehrliche Anleitung steht in README.md.
+index.html nicht direkt doppelklicken: Dies ist ein React-Quellprojekt.
+Lokal mit Node.js 24 und pnpm starten (siehe README).
 
-GitHub Pages benötigt bei einer Repository-Unteradresse eine Anpassung
-der Basis- und PWA-Pfade. Dieser Stand ist für die Wurzel einer Domain
-gebaut. Ein Code-Repository kann unabhängig davon genutzt werden.
+Die App speichert Protokolle nur im jeweiligen Browser. Bestehende Daten
+vor dem Wechsel als JSON exportieren und an der neuen Adresse importieren.
+Dieses ZIP enthaelt keine persoenlichen Protokolle und keine Zugangsdaten.
 
-Persönliche Protokolle sind nicht enthalten. Diese bleiben im Browser.
-Für einen Umzug auf eine andere Adresse vorher ein JSON-Backup sichern.
+Konzept und Projektverantwortung: Carsten Schuette
+Technische Umsetzung: Mit Unterstuetzung von OpenAI Codex entwickelt
