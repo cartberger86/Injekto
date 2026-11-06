@@ -1,0 +1,17 @@
+Injekto-log 1.1.1 – Quellcode
+
+1. ZIP entpacken.
+2. README.md lesen.
+3. Mit Node.js und pnpm: pnpm install, dann pnpm dev.
+4. Mit pnpm build die fertige Website erzeugen.
+
+GitHub: Leeres Repository erstellen, entpackte Projektdateien hochladen
+oder mit GitHub Desktop committen und pushen. Die ZIP-Datei selbst
+ist kein GitHub-Quellcode-Upload. .gitignore mit übernehmen.
+
+GitHub Pages benötigt bei einer Repository-Unteradresse eine Anpassung
+der Basis- und PWA-Pfade. Dieser Stand ist für die Wurzel einer Domain
+gebaut. Ein Code-Repository kann unabhängig davon genutzt werden.
+
+Persönliche Protokolle sind nicht enthalten. Diese bleiben im Browser.
+Für einen Umzug auf eine andere Adresse vorher ein JSON-Backup sichern.
